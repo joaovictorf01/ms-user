@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15.3
+    container_name: ms-user-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: msuser
+      POSTGRES_PASSWORD: msuserpassword
+      POSTGRES_DB: msuserdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
