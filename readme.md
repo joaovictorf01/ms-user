@@ -8,11 +8,11 @@ Este projeto faz parte do curso da FIAP e visa consolidar conhecimentos em backe
 
 ## Funcionalidades
 
-- Cadastro de Usuários: Registra novos usuários com dados como nome, email, login, senha e endereço.
-- Atualização de Dados: Permite modificar as informações cadastradas.
-- Exclusão de Usuários: Remove permanentemente um usuário do sistema.
-- Validação de Login: Verifica se login e senha são válidos.
-- Troca de Senha: Permite a atualização da senha do usuário.
+- Registrar novos usuários com dados como nome, email, login, senha e endereço.
+- Modificar informações cadastradas dos usuários.
+- Excluir permanentemente um usuário do sistema.
+- Validar login, verificando se login e senha são válidos.
+- Atualizar a senha do usuário.
 
 ---
 
@@ -64,33 +64,11 @@ Este projeto faz parte do curso da FIAP e visa consolidar conhecimentos em backe
 
 ## Documentação Interativa (Swagger)
 
-A documentação da API pode ser acessada por meio do Swagger UI, gerado automaticamente pelo Springdoc OpenAPI.
+A documentação da API pode ser acessada por meio do Swagger UI, gerado automaticamente pelo Springdoc OpenAPI, assim como por arquivos `.http` incluídos no projeto.
 
 - URL para a documentação: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 Essa documentação permite explorar e testar todos os endpoints diretamente no navegador.
-
----
-
-## Estrutura do Projeto
-
-```plaintext
-ms-user
-├── src/main/java
-│   ├── com.jvfmend.msuser
-│   │   ├── controller    # Controladores REST
-│   │   ├── service       # Lógica de negócios
-│   │   ├── repository    # Interfaces JPA
-│   │   ├── entity        # Entidades e mapeamento JPA
-│   │   ├── dto           # Data Transfer Objects
-│   │   └── config        # Configurações gerais
-├── src/main/resources
-│   ├── application.yml   # Configurações do Spring Boot
-├── *.http                # Arquivos .http para teste e documentação
-├── Dockerfile            # Configuração Docker
-├── docker-compose.yml    # Configuração Docker Compose
-└── README.md             # Documentação do projeto
-```
 
 ---
 
@@ -102,7 +80,7 @@ ms-user
 | GET    | `/users/{id}`        | Buscar usuário pelo ID         |
 | PUT    | `/users/{id}`        | Atualizar dados do usuário     |
 | DELETE | `/users/{id}`        | Excluir usuário                |
-| POST   | `/auth/login`        | Validar login e senha          |
+| POST   | `/users/login`        | Validar login e senha          |
 | PUT    | `/users/{id}/password` | Atualizar senha do usuário    |
 
 ---
