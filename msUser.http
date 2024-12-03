@@ -1,5 +1,5 @@
 ### Criar um novo usuário
-POST http://localhost:8080/users 
+POST http://localhost:8080/users
 Content-Type: application/json
 
 {
@@ -11,17 +11,13 @@ Content-Type: application/json
 }
 
 ### Listar todos os usuários
-
-
 GET http://localhost:8080/users
 
 ### Buscar usuário por ID
-
 GET http://localhost:8080/users/1
 
 ### Atualizar usuário
-
-PUT http://localhost:8080/users/1 
+PUT http://localhost:8080/users/1
 Content-Type: application/json
 
 {
@@ -33,5 +29,19 @@ Content-Type: application/json
 }
 
 ### Deletar usuário por ID
-
 DELETE http://localhost:8080/users/1
+
+### Login de usuário
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+    "login": "joaovictor",
+    "password": "123456"
+}
+
+### Atualizar senha do usuário
+PUT http://localhost:8080/users/1/password
+Content-Type: text/plain
+
+novaSenhaSegura123

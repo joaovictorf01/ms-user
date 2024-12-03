@@ -1,5 +1,6 @@
 package com.jvfmend.msuser.service;
 
+import com.jvfmend.msuser.dto.UserLoginRequestDTO;
 import com.jvfmend.msuser.dto.UserRequestDTO;
 import com.jvfmend.msuser.dto.UserResponseDTO;
 import com.jvfmend.msuser.entity.User;
@@ -57,4 +58,18 @@ public class UserService {
         return new UserResponseDTO(user.getId(), user.getName(), user.getEmail(), user.getLogin(),
                 user.getAddress(), user.getLastModified());
     }
+
+    public boolean validateLogin(UserLoginRequestDTO userLoginRequestDTO) {
+        return userRepository.findByLogin(userLoginRequestDTO.login())
+                .map(user -> user.getPassword().equals(userLoginRequestDTO.password()))
+                .orElse(false);
+    }
+
+    public void updatePassword(Long id, String newPassword) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+        user.setPassword(newPassword);
+        userRepository.save(user);
+    }
+
 }

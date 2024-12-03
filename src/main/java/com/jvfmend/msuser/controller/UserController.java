@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jvfmend.msuser.dto.UserLoginRequestDTO;
 import com.jvfmend.msuser.dto.UserRequestDTO;
 import com.jvfmend.msuser.dto.UserResponseDTO;
 import com.jvfmend.msuser.service.UserService;
@@ -50,5 +51,21 @@ public class UserController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         userService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody UserLoginRequestDTO userLoginRequestDTO) {
+        boolean isAuthenticated = userService.validateLogin(userLoginRequestDTO);
+        if (isAuthenticated) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid login or password");
+        }
+    }
+
+    @PutMapping("/{id}/password")
+    public ResponseEntity<String> updatePassword(@PathVariable Long id, @RequestBody String newPassword) {
+        userService.updatePassword(id, newPassword);
+        return ResponseEntity.ok("Password updated successfully");
     }
 }
